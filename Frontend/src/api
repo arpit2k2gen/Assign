@@ -1,1 +1,10 @@
 
+import axios from "axios";
+import { Task } from "../types/Task";
+
+const API_URL = "https://localhost:5001/api/tasks";
+
+export const getTasks = () => axios.get<Task[]>(API_URL);
+export const addTask = (description: string) => axios.post<Task>(API_URL, { description });
+export const toggleTask = (id: number) => axios.put(`${API_URL}/${id}`);
+export const deleteTask = (id: number) => axios.delete(`${API_URL}/${id}`);
